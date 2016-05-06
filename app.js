@@ -8,6 +8,9 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/todoshka');
+
 var app = express();
 
 // view engine setup
@@ -56,5 +59,10 @@ app.use(function(err, req, res, next) {
   });
 });
 
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("Mongoose connection successful");
+});
 
 module.exports = app;
