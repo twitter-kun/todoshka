@@ -7,19 +7,47 @@ block content
       .row
         .col-md-4
           h3 Tasks {{hui}}
-          button.btn.btn-default.glyphicon.glyphicon-plus
+          button.btn.btn-default.glyphicon.glyphicon-plus(data-toggle="modal")(data-target="#editModal")(ng-click="prepareAdd()")
       .row
         .col-md-4
           ul.list-group
-            li.list-group-item Task 1
-            li.list-group-item.active Task 2
-            li.list-group-item Task 3
+            div(ng-repeat="(key,value) in tasks")
+              li.list-group-item(class="{{key == activeTask ? 'active' : ''}}")(ng-click="chooseTask(key)") {{value.name}}
         .col-md-8
           .panel.panel-info
             .panel-heading 
-              h4.inline Task 2
+              h4.inline {{currentTask.name}}
               .btn-group.right
                 button.btn.btn-default.glyphicon.glyphicon-list
-                button.btn.btn-default.glyphicon.glyphicon-pencil
+                button.btn.btn-default.glyphicon.glyphicon-pencil(data-toggle="modal")(data-target="#editModal")(ng-click="prepareEdit()")
                 button.btn.btn-default.glyphicon.glyphicon-trash
-            .panel-body Some desc goes here
+            .panel-body {{currentTask.desc}}
+
+      #editModal.modal.fade(role="dialog")
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(data-dismiss="modal") &times;
+              h4.modal-title {{typeLabel}} Task
+            .modal-body
+              form(role="form")
+                .form-group
+                  label(for="name") Task name
+                  input(type="name").form-control#name(ng-disabled="!isNew")(placeholder="Enter name")(ng-model="newName")
+                .form-group
+                  label(for="name") Task description
+                  textarea(type="name").form-control#name(placeholder="Enter description")(ng-model="newDesc")
+            .modal-footer
+              button.btn.btn-default(data-dismiss="modal")(ng-click="saveTask()") Save
+              button.btn.btn-default(data-dismiss="modal") Cancel
+
+      #errorModal.modal.fade(role="dialog")
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(data-dismiss="modal") &times;
+              h4.modal-title Error
+            .modal-body
+              p {{lastError}}
+            .modal-footer
+              button.btn.btn-default(data-dismiss="modal") Close
