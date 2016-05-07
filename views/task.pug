@@ -1,4 +1,22 @@
 extends layout
 
 block content
-  h1 Tasks
+  .row
+    .col-md-4
+      h3 Tasks
+      button.btn.btn-default.glyphicon.glyphicon-plus
+  .row
+    .col-md-4
+      ul.list-group
+        li.list-group-item Task 1
+        li.list-group-item.active Task 2
+        li.list-group-item Task 3
+    .col-md-8
+      .panel.panel-info
+        .panel-heading 
+          h4.inline Task 2
+          .btn-group.right
+            button.btn.btn-default.glyphicon.glyphicon-list
+            button.btn.btn-default.glyphicon.glyphicon-pencil
+            button.btn.btn-default.glyphicon.glyphicon-trash
+        .panel-body Some desc goes here
