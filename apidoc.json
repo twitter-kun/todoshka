@@ -1,0 +1,6 @@
+{
+  "name": "todoshka",
+  "version": "1.0.0",
+  "description": "ToDoShka server and web-interface",
+  "url" : "https://todoshka.herokuapp.com"
+}
