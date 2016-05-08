@@ -7,7 +7,18 @@ html
     script(src='/javascripts/jquery-1.12.3.min.js')
     script(src='/javascripts/angular.min.js')
     script(src='/bootstrap/js/bootstrap.min.js')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-uom.css')
 
   body
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          a.navbar-brand(href="/") ToDoShka
+        ul.nav.navbar-nav
+          li
+            a(href="/task") Tasks
+          li
+            a(href="/apidoc") ApiDoc
+
     .container
       block content

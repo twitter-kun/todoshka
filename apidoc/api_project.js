@@ -1,1 +1,0 @@
-define({  "name": "todoshka",  "version": "1.0.0",  "description": "ToDoShka server and web-interface",  "url": "https://todoshka.herokuapp.com",  "sampleUrl": false,  "apidoc": "0.2.0",  "generator": {    "name": "apidoc",    "time": "2016-05-07T00:46:48.302Z",    "url": "http://apidocjs.com",    "version": "0.16.1"  }});

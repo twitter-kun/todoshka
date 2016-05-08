@@ -1,0 +1,1 @@
+{  "name": "todoshka",  "version": "1.0.0",  "description": "ToDoShka server and web-interface",  "url": "https://todoshka.herokuapp.com",  "sampleUrl": false,  "apidoc": "0.2.0",  "generator": {    "name": "apidoc",    "time": "2016-05-08T18:46:13.845Z",    "url": "http://apidocjs.com",    "version": "0.16.1"  }}

@@ -6,21 +6,24 @@ block content
     div(ng-controller="TaskController")
       .row
         .col-md-4
-          h3 Tasks {{hui}}
+          h3 Tasks {{sequence}}
+          button.btn.btn-default.glyphicon.glyphicon-chevron-left(ng-click="goBack()")
           button.btn.btn-default.glyphicon.glyphicon-plus(data-toggle="modal")(data-target="#editModal")(ng-click="prepareAdd()")
       .row
         .col-md-4
           ul.list-group
             div(ng-repeat="(key,value) in tasks")
-              li.list-group-item(class="{{key == activeTask ? 'active' : ''}}")(ng-click="chooseTask(key)") {{value.name}}
+              li.list-group-item(class="{{key == activeTask ? 'active' : ''}}")(ng-click="chooseTask(key)") 
+                input(type="checkbox" ng-model="value.ticked" ng-change="patchTaskTick(value)")
+                |  {{value.name}}
         .col-md-8
           .panel.panel-info
             .panel-heading 
               h4.inline {{currentTask.name}}
               .btn-group.right
-                button.btn.btn-default.glyphicon.glyphicon-list
+                button.btn.btn-default.glyphicon.glyphicon-list(ng-click="goToSubs(currentTask._id, currentTask.name)")
                 button.btn.btn-default.glyphicon.glyphicon-pencil(data-toggle="modal")(data-target="#editModal")(ng-click="prepareEdit()")
-                button.btn.btn-default.glyphicon.glyphicon-trash
+                button.btn.btn-default.glyphicon.glyphicon-trash(ng-click="deleteCurrent()")
             .panel-body {{currentTask.desc}}
 
       #editModal.modal.fade(role="dialog")
