@@ -129,9 +129,9 @@ router.patch('/:id', function(req, res) {
         return;
       }
     }
-    if(req.body.desc)
+    if(req.body.desc != undefined && req.body.desc != null)
       task.desc = req.body.desc;
-    if(req.body.ticked)
+    if(req.body.ticked != undefined && req.body.ticked != null)
       task.ticked = req.body.ticked;
     task.save(function(err,task){
       if(err)
